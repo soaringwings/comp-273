@@ -11,10 +11,15 @@
         la $t1, size
         lw $s0, 0($t1)
 
+        # s1 is the variable max
         la $t1, a
         lw $s1, 0($t1)
 
+        # s2 is the variable i
         addi $s2, $zero, 1
+
+        # s3 is the default max
+        addi $s3, $zero, 0
 
     loop: 
         bge $s2, $s0, endloop
@@ -26,6 +31,7 @@
 
     newmax: 
         move $s1, $t2
+        addi $s3, $s2, -1 # <---
 
     label: 
         addi $s2, $s2, 1
